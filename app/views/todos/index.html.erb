@@ -2,27 +2,27 @@
 
 <h1>Todos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th>Complete</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @todos.each do |todo| %>
-      <tr>
-        <td><%= todo.text %></td>
-        <td><%= todo.complete %></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="todo-list">
+  <% @todos.each do |todo| %>
+    <li class="<%= todo.complete ? "todo todo--completed" : "todo" %>" data-todo-id="<%= todo.id %>">
+      <div class="todo__content">
+        <span class="todo__complete">
+          <% if todo.complete %>
+            <i class="material-icons">check_box</i>
+          <% else %>
+            <i class="material-icons">check_box_outline_blank</i>
+          <% end %>
+        </span>
+        <span class="todo__text"><%= todo.text %></span>
+      </div>
+      <div class="todo__links">
+        <span><%= link_to 'Show', todo %></span>
+        <span><%= link_to 'Edit', edit_todo_path(todo) %></span>
+        <span><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      </div>
+    </li>
+  <% end %>
+</ul>
 
 <br>
 
