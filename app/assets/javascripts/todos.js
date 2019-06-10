@@ -26,12 +26,20 @@
     })
   };
 
-  document.addEventListener("DOMContentLoaded", () => {
+  const bindToggleComplete = () => {
     const todoElements = document.querySelectorAll(".todo");
     todoElements.forEach(todoEl => {
       const contentEl = todoEl.querySelector(".todo__content");
       contentEl.removeEventListener("click", toggleComplete);
       contentEl.addEventListener("click", toggleComplete);
     });
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    bindToggleComplete();
+  });
+
+  document.addEventListener("turbolinks:load", () => {
+    bindToggleComplete();
   });
 })();
