@@ -40,3 +40,34 @@
     }
   }
 }
+
+.todo-new {
+  display: flex;
+  align-items: center;
+
+  &__field {
+    padding: 0 5px;
+  }
+
+  &__text {
+    border: 1px solid rgba(0,0,0,.24);
+    border-radius: 4px;
+    padding: 10px;
+    appearance: none;
+    font-size: 1.4em;
+  }
+
+  &__button {
+    color: #ffffff;
+    background-color: rgba(63, 81, 181, 1.0);
+    padding: 10px 15px;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.4em;
+
+    &:hover {
+      background-color: rgba(63, 81, 181, 0.8);
+    }
+  }
+}
