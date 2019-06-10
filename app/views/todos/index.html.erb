@@ -2,6 +2,15 @@
 
 <h1>Todos</h1>
 
+<div id="todo-new" class="todo-new">
+  <div class="todo-new__field">
+    <input class="todo-new__text" name="text" type="text" />
+  </div>
+  <div class="todo-new__field">
+    <button class="todo-new__button" type="button">作成</button>
+  </div>
+</div>
+
 <ul class="todo-list">
   <% @todos.each do |todo| %>
     <li class="<%= todo.complete ? "todo todo--completed" : "todo" %>" data-todo-id="<%= todo.id %>">

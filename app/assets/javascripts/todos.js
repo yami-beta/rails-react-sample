@@ -35,11 +35,42 @@
     });
   };
 
+  const createTodo = event => {
+    const todoNewEl = document.getElementById("todo-new")
+    const text = todoNewEl.querySelector(".todo-new__text").value;
+
+    fetch(`/todos`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        text
+      })
+    }).then(res => {
+      if (res.ok) {
+        window.location.reload();
+      }
+    }).catch(error => {
+      console.error(error);
+    });
+  };
+
+  const bindCreateTodo = () => {
+    document.querySelectorAll(".todo-new__button").forEach(button => {
+      button.removeEventListener("click", createTodo);
+      button.addEventListener("click", createTodo);
+    });
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     bindToggleComplete();
+    bindCreateTodo();
   });
 
   document.addEventListener("turbolinks:load", () => {
     bindToggleComplete();
+    bindCreateTodo();
   });
 })();
