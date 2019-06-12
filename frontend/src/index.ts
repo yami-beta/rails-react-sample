@@ -1,1 +1,3 @@
-console.log("Hello World");
+import { todoInit } from "./todo";
+
+todoInit();
